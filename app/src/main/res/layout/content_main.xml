@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/service_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/service_1_button_text" />
+
+        <Button
+            android:id="@+id/service_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/service_1"
+            android:layout_marginBottom="10dp"
+            android:text="@string/service2_button_text" />
+
+        <Button
+            android:id="@+id/service_1_and_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/service_2"
+            android:layout_marginBottom="10dp"
+            android:text="@string/service_1_and_2_button_text" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/service_1_and_2" />
+
+    </RelativeLayout>
+</layout>

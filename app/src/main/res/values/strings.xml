@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="service_1_button_text">Get data from service 1</string>
+    <string name="service2_button_text">Get processed data from service 2</string>
+    <string name="service_1_and_2_button_text">Get data merged from service 1 and 2</string>
+</resources>
