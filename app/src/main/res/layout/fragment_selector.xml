@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="p.kirke.testapp.app.ViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
 
         <Button
             android:id="@+id/service_1"
@@ -11,6 +18,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
+            android:onClick="@{() -> viewModel.onClickService1Button()}"
             android:text="@string/service_1_button_text" />
 
         <Button
@@ -19,6 +27,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/service_1"
             android:layout_marginBottom="10dp"
+            android:onClick="@{() -> viewModel.onClickService2Button()}"
             android:text="@string/service2_button_text" />
 
         <Button
@@ -27,6 +36,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/service_2"
             android:layout_marginBottom="10dp"
+            android:onClick="@{() -> viewModel.onClickMergeService1And2Button()}"
             android:text="@string/service_1_and_2_button_text" />
 
         <android.support.v7.widget.RecyclerView
