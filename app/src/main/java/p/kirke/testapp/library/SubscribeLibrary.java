@@ -8,5 +8,5 @@ public interface SubscribeLibrary {
 
     Observable<String> subscribeToService2AndProcess();
 
-    Observable<String> filterAndMergeServiceOutputs();
+    Observable<String> subscribeToFilterAndMergeServiceOutputs();
 }

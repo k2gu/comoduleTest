@@ -7,27 +7,31 @@ import p.kirke.testapp.library.SubscribeLibraryImplementation;
 
 public class ViewModel {
 
-    StringCache cache = StringCache.getInstance();
-    SubscribeLibraryImplementation subscribeLibrary = new SubscribeLibraryImplementation();
+    private StringCache cache = StringCache.getInstance();
+    private SubscribeLibraryImplementation subscribeLibrary = new SubscribeLibraryImplementation();
 
-    public void subscribeToService1() {
-        subscribeLibrary.subscribeToService1();
+    private void subscribeToService1() {
+        subscribeLibrary.subscribeToService1().subscribe(getObserver());
     }
 
-    public void subscribeToService2AndProcess() {
-        subscribeLibrary.subscribeToService2AndProcess();
+    private void subscribeToService2AndProcess() {
+        subscribeLibrary.subscribeToService2AndProcess().subscribe(getObserver());
     }
 
-    public void filterAndMergeServiceOutputs() {
-        subscribeLibrary.filterAndMergeServiceOutputs().subscribe(new Observer<String>() {
+    private void subscribeToFilterAndMergeServiceOutputs() {
+        subscribeLibrary.subscribeToFilterAndMergeServiceOutputs().subscribe(getObserver());
+    }
+
+    private Observer<? super String> getObserver() {
+        return new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
-
+                cache.clear();
             }
 
             @Override
-            public void onNext(String s) {
-                cache.addString(s);
+            public void onNext(String string) {
+                cache.add(string);
             }
 
             @Override
@@ -37,8 +41,20 @@ public class ViewModel {
 
             @Override
             public void onComplete() {
-
+                cache.publishData();
             }
-        });
+        };
+    }
+
+    public void onClickService2Button() {
+        subscribeToService2AndProcess();
+    }
+
+    public void onClickService1Button() {
+        subscribeToService1();
+    }
+
+    public void onClickMergeService1And2Button() {
+        subscribeToFilterAndMergeServiceOutputs();
     }
 }

@@ -33,7 +33,7 @@ public class SubscribeLibraryImplementation implements SubscribeLibrary {
     }
 
     @Override
-    public Observable<String> filterAndMergeServiceOutputs() {
+    public Observable<String> subscribeToFilterAndMergeServiceOutputs() {
         Observable<String> filteredService1 = dummyService.service1().filter(this::allCharactersUnique);
         Observable<String> filteredService2 = dummyService.service2().filter(this::allCharactersUnique);
 

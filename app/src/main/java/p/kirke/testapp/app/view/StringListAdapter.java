@@ -3,10 +3,10 @@ package p.kirke.testapp.app.view;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import p.kirke.testapp.R;
@@ -14,11 +14,7 @@ import p.kirke.testapp.databinding.ListItemStringBinding;
 
 public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.ViewHolder> {
 
-    private List<String> dataList;
-
-    StringListAdapter(List<String> dataList) {
-        this.dataList = dataList;
-    }
+    private List<String> dataList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -32,7 +28,6 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Log.e("On bind view holder", "**********");
         viewHolder.binding.setDataString(dataList.get(position));
         viewHolder.binding.executePendingBindings();
     }
@@ -40,6 +35,11 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+    public void updateData(List<String> updatedData) {
+        dataList = updatedData;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

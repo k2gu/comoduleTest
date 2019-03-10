@@ -2,33 +2,28 @@ package p.kirke.testapp.app.view;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
 
 import p.kirke.testapp.R;
-import p.kirke.testapp.app.ViewModel;
-import p.kirke.testapp.app.data.StringCache;
-import p.kirke.testapp.databinding.ContentMainBinding;
+import p.kirke.testapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ContentMainBinding binding = DataBindingUtil.setContentView(this, R.layout.content_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
-        RecyclerView recyclerView = binding.listView;
+        openFragment(new SelectorFragment());
+    }
 
-        viewModel = new ViewModel();
-        viewModel.filterAndMergeServiceOutputs();
-
-        StringCache cache = StringCache.getInstance();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new StringListAdapter(cache.getData()));
+    private void openFragment(Fragment fragmentToOpen) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.fragment_container, fragmentToOpen)
+                .commit();
     }
 }
