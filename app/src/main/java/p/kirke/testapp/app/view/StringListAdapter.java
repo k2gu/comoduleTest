@@ -29,7 +29,6 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.binding.setDataString(dataList.get(position));
-        viewHolder.binding.executePendingBindings();
     }
 
     @Override
