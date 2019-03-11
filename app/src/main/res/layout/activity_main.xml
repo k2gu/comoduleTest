@@ -9,7 +9,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_layout_size"
-            android:layout_marginBottom="@dimen/fab_margin" />
+            android:layout_marginBottom="@dimen/default_margin" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/fragment_container"

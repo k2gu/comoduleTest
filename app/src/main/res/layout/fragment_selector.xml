@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:layout_margin="@dimen/default_margin">
 
         <Button
             android:id="@+id/service_1_button"
             style="@style/custom_button"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/button_height"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:onClick="@{() -> viewModel.onClickService1Button()}"
@@ -27,8 +27,7 @@
             android:id="@+id/service_2_button"
             style="@style/custom_button"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-
+            android:layout_height="@dimen/button_height"
             android:layout_below="@id/service_1_button"
             android:layout_centerHorizontal="true"
             android:onClick="@{() -> viewModel.onClickService2Button()}"
@@ -38,7 +37,7 @@
             android:id="@+id/service_1_and_2_button"
             style="@style/custom_button"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/button_height"
             android:layout_below="@id/service_2_button"
             android:layout_centerHorizontal="true"
             android:onClick="@{() -> viewModel.onClickMergeService1And2Button()}"
