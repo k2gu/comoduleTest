@@ -54,7 +54,7 @@ public class SubscribeLibrary_should {
 
         dummyService1Observable
                 .test()
-                .assertValues("one aye", "two beta", "tri charlie", "four delta", "five echo")
+                .assertValues("aye one", "beta two", "charlie tri", "delta four", "echo five")
                 .dispose();
     }
 }

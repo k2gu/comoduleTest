@@ -38,7 +38,7 @@ public class SubscribeLibraryImplementation implements SubscribeLibrary {
         Observable<String> filteredService2 = dummyService.service2().filter(this::allCharactersUnique);
 
         return Observable
-                .zip(filteredService1, filteredService2, this::concatStrings)
+                .zip(filteredService2, filteredService1, this::concatStrings)
                 .observeOn(Schedulers.trampoline());
     }
 

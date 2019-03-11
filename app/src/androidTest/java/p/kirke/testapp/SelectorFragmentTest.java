@@ -51,7 +51,7 @@ public class SelectorFragmentTest {
     }
 
     @Test
-    public void ensureSelectorFragmentIsDisplayedAfterSwipe() {
+    public void ensureSelectorFragmentIsDisplayedAfterSwipe() throws InterruptedException {
         onView(withId(R.id.fragment_container))
                 .perform(swipeLeft());
         onView(withId(R.id.service_1_button))
@@ -60,7 +60,81 @@ public class SelectorFragmentTest {
                 .check(matches(isClickable()));
         onView(withId(R.id.service_1_and_2_button))
                 .check(matches(isClickable()));
+        Thread.sleep(100);
         onView(withId(R.id.service_1_button))
                 .perform(click());
+        onView(withId(R.id.listView))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ensureDataDisplayedOnClickService1Button() throws InterruptedException {
+        onView(withId(R.id.fragment_container))
+                .perform(swipeLeft());
+        Thread.sleep(200);
+        onView(withId(R.id.service_1_button))
+                .perform(click());
+        Thread.sleep(200);
+        onView(withId(R.id.listView))
+                .perform(RecyclerViewActions.scrollToPosition(1))
+                .check(matches(hasDescendant(withText("one"))))
+                .perform(RecyclerViewActions.scrollToPosition(2))
+                .check(matches(hasDescendant(withText("aaa"))))
+                .perform(RecyclerViewActions.scrollToPosition(3))
+                .check(matches(hasDescendant(withText("two"))))
+                .perform(RecyclerViewActions.scrollToPosition(4))
+                .check(matches(hasDescendant(withText("bbb"))))
+                .perform(RecyclerViewActions.scrollToPosition(5))
+                .check(matches(hasDescendant(withText("tri"))))
+                .perform(RecyclerViewActions.scrollToPosition(6))
+                .check(matches(hasDescendant(withText("ccc"))))
+                .perform(RecyclerViewActions.scrollToPosition(7))
+                .check(matches(hasDescendant(withText("four"))))
+                .perform(RecyclerViewActions.scrollToPosition(8))
+                .check(matches(hasDescendant(withText("ddd"))))
+                .perform(RecyclerViewActions.scrollToPosition(9))
+                .check(matches(hasDescendant(withText("five"))));
+    }
+
+    @Test
+    public void ensureDataDisplayedOnClickService2Button() throws InterruptedException {
+        onView(withId(R.id.fragment_container))
+                .perform(swipeLeft());
+        Thread.sleep(200);
+        onView(withId(R.id.service_2_button))
+                .perform(click());
+        Thread.sleep(200);
+        onView(withId(R.id.listView))
+                .perform(RecyclerViewActions.scrollToPosition(1))
+                .check(matches(hasDescendant(withText("aye"))))
+                .perform(RecyclerViewActions.scrollToPosition(2))
+                .check(matches(hasDescendant(withText("beta"))))
+                .perform(RecyclerViewActions.scrollToPosition(3))
+                .check(matches(hasDescendant(withText("charlie"))))
+                .perform(RecyclerViewActions.scrollToPosition(4))
+                .check(matches(hasDescendant(withText("delta"))))
+                .perform(RecyclerViewActions.scrollToPosition(5))
+                .check(matches(hasDescendant(withText("echo"))));
+    }
+
+    @Test
+    public void ensureDataDisplayedOnClickService1And2Button() throws InterruptedException {
+        onView(withId(R.id.fragment_container))
+                .perform(swipeLeft());
+        Thread.sleep(200);
+        onView(withId(R.id.service_1_and_2_button))
+                .perform(click());
+        Thread.sleep(200);
+        onView(withId(R.id.listView))
+                .perform(RecyclerViewActions.scrollToPosition(1))
+                .check(matches(hasDescendant(withText("aye one"))))
+                .perform(RecyclerViewActions.scrollToPosition(2))
+                .check(matches(hasDescendant(withText("beta two"))))
+                .perform(RecyclerViewActions.scrollToPosition(3))
+                .check(matches(hasDescendant(withText("charlie tri"))))
+                .perform(RecyclerViewActions.scrollToPosition(4))
+                .check(matches(hasDescendant(withText("delta four"))))
+                .perform(RecyclerViewActions.scrollToPosition(5))
+                .check(matches(hasDescendant(withText("echo five"))));
     }
 }
