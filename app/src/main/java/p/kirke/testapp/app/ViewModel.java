@@ -3,12 +3,13 @@ package p.kirke.testapp.app;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import p.kirke.testapp.app.data.StringCache;
+import p.kirke.testapp.library.SubscribeLibrary;
 import p.kirke.testapp.library.SubscribeLibraryImplementation;
 
 public class ViewModel {
 
     private StringCache cache = StringCache.getInstance();
-    private SubscribeLibraryImplementation subscribeLibrary = new SubscribeLibraryImplementation();
+    private SubscribeLibrary subscribeLibrary = new SubscribeLibraryImplementation();
 
     private void subscribeToService1() {
         subscribeLibrary.subscribeToService1().subscribe(getObserver());
