@@ -4,4 +4,7 @@
     <string name="service_1_button_text">Get data from service 1</string>
     <string name="service2_button_text">Get processed data from service 2</string>
     <string name="service_1_and_2_button_text">Get data merged from service 1 and 2</string>
+
+    <string name="string_list_fragment_title">String list fragment</string>
+    <string name="selector_fragment_title">Selector fragment</string>
 </resources>

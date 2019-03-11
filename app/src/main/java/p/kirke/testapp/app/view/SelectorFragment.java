@@ -22,7 +22,6 @@ public class SelectorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         FragmentSelectorBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_selector,
                 container, false);
         initView(binding);
