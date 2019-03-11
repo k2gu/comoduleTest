@@ -60,7 +60,7 @@ public class MainActivityTest {
                 .check(matches(isClickable()));
         onView(withId(R.id.service_1_and_2_button))
                 .check(matches(isClickable()));
-        Thread.sleep(100);
+        Thread.sleep(200);
         onView(withId(R.id.service_1_button))
                 .perform(click());
         onView(withId(R.id.listView))
