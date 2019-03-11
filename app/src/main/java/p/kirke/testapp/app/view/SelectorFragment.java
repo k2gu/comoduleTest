@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import p.kirke.testapp.R;
-import p.kirke.testapp.app.ViewModel;
 import p.kirke.testapp.app.data.StringCache;
+import p.kirke.testapp.app.viewmodel.ViewModel;
 import p.kirke.testapp.databinding.FragmentSelectorBinding;
 
 public class SelectorFragment extends Fragment {
@@ -35,7 +35,8 @@ public class SelectorFragment extends Fragment {
     }
 
     private void setViewModelToLayout(FragmentSelectorBinding binding) {
-        ViewModel viewModel = new ViewModel();
+        MainActivity activity = (MainActivity) getActivity();
+        ViewModel viewModel = activity == null ? new ViewModel() : activity.getViewModel();
         binding.setViewModel(viewModel);
     }
 

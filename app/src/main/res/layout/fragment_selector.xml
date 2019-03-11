@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="p.kirke.testapp.app.ViewModel" />
+            type="p.kirke.testapp.app.viewmodel.ViewModel" />
     </data>
 
     <RelativeLayout
@@ -13,29 +13,33 @@
         android:layout_margin="20dp">
 
         <Button
-            android:id="@+id/service_1"
+            android:id="@+id/service_1_button"
+            style="@style/custom_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
             android:onClick="@{() -> viewModel.onClickService1Button()}"
             android:text="@string/service_1_button_text" />
 
         <Button
-            android:id="@+id/service_2"
+            android:id="@+id/service_2_button"
+            style="@style/custom_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/service_1"
-            android:layout_marginBottom="10dp"
+
+            android:layout_below="@id/service_1_button"
+            android:layout_centerHorizontal="true"
             android:onClick="@{() -> viewModel.onClickService2Button()}"
             android:text="@string/service2_button_text" />
 
         <Button
-            android:id="@+id/service_1_and_2"
+            android:id="@+id/service_1_and_2_button"
+            style="@style/custom_button"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/service_2"
-            android:layout_marginBottom="10dp"
+            android:layout_below="@id/service_2_button"
+            android:layout_centerHorizontal="true"
             android:onClick="@{() -> viewModel.onClickMergeService1And2Button()}"
             android:text="@string/service_1_and_2_button_text" />
 
@@ -43,7 +47,8 @@
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/service_1_and_2" />
+            android:layout_below="@id/service_1_and_2_button"
+            android:overScrollMode="never" />
 
     </RelativeLayout>
 </layout>

@@ -1,4 +1,6 @@
-package p.kirke.testapp.app;
+package p.kirke.testapp.app.viewmodel;
+
+import android.util.Log;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -10,6 +12,7 @@ public class ViewModel {
 
     private StringCache cache = StringCache.getInstance();
     private SubscribeLibrary subscribeLibrary = new SubscribeLibraryImplementation();
+    private Disposable activeSubscription;
 
     private void subscribeToService1() {
         subscribeLibrary.subscribeToService1().subscribe(getObserver());
@@ -26,7 +29,9 @@ public class ViewModel {
     private Observer<? super String> getObserver() {
         return new Observer<String>() {
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(Disposable disposable) {
+                releaseResourcesIfNeeded();
+                activeSubscription = disposable;
                 cache.clear();
             }
 
@@ -45,6 +50,12 @@ public class ViewModel {
                 cache.publishData();
             }
         };
+    }
+
+    public void releaseResourcesIfNeeded() {
+        if (activeSubscription != null && activeSubscription.isDisposed()) {
+            activeSubscription.dispose();
+        }
     }
 
     public void onClickService2Button() {

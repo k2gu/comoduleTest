@@ -7,9 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import p.kirke.testapp.R;
+import p.kirke.testapp.app.viewmodel.ViewModel;
 import p.kirke.testapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
-
+        viewModel = new ViewModel();
         createFragmentViewPager(binding);
     }
 
@@ -30,10 +33,20 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    ViewModel getViewModel() {
+        return this.viewModel;
+    }
+
     private TabAdapter getTabAdapterWithFragments() {
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new StringListFragment(), getString(R.string.string_list_fragment_title));
         adapter.addFragment(new SelectorFragment(), getString(R.string.selector_fragment_title));
         return adapter;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewModel.releaseResourcesIfNeeded();
     }
 }
