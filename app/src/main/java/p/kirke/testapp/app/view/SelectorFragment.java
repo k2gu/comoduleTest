@@ -18,12 +18,14 @@ import p.kirke.testapp.databinding.FragmentSelectorBinding;
 public class SelectorFragment extends Fragment {
 
     private StringListAdapter adapter;
+    private StringCache cache;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentSelectorBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_selector,
                 container, false);
+        cache = StringCache.getInstance();
         initView(binding);
         return binding.getRoot();
     }
@@ -32,6 +34,7 @@ public class SelectorFragment extends Fragment {
         setViewModelToLayout(binding);
         setUpRecyclerView(binding);
         setDataObserver();
+        setStateObserver(binding);
     }
 
     private void setViewModelToLayout(FragmentSelectorBinding binding) {
@@ -48,7 +51,12 @@ public class SelectorFragment extends Fragment {
     }
 
     public void setDataObserver() {
-        StringCache cache = StringCache.getInstance();
         cache.getData().observe(this, stringList -> adapter.updateData(stringList));
+    }
+
+    public void setStateObserver(FragmentSelectorBinding binding) {
+        cache.getState().observe(this, state -> {
+            binding.error.setVisibility(state == StringCache.State.ERROR ? View.VISIBLE : View.GONE);
+        });
     }
 }

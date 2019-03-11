@@ -1,9 +1,11 @@
 package p.kirke.testapp.library;
+
 import io.reactivex.Observable;
 
 public class DummyService {
+
     public Observable<String> service1() {
-        return Observable.just("one","aaa","two","bbb","tri","ccc","four","ddd","five");
+        return Observable.just("one", "aaa", "two", "bbb", "tri", "ccc", "four", "ddd", "five");
     }
 
     public Observable<String> service2() {

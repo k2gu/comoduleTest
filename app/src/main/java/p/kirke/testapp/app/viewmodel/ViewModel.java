@@ -40,7 +40,7 @@ public class ViewModel {
 
             @Override
             public void onError(Throwable e) {
-
+                cache.publishError();
             }
 
             @Override

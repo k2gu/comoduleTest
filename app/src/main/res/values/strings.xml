@@ -7,6 +7,7 @@
 
     <string name="string_list_fragment_title">String list fragment</string>
     <string name="selector_fragment_title">Selector fragment</string>
+    <string name="generic_error">Something went wrong! Try again</string>
     <string-array name="string_list_items">
         <item>String one</item>
         <item>String two</item>

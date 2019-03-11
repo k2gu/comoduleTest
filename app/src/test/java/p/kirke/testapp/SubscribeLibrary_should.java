@@ -35,7 +35,7 @@ public class SubscribeLibrary_should {
 
     @Test
     public void remove_repeated_letter_strings_on_call_subscribe_to_service_2_and_process() {
-        given(dummyService.service1()).willReturn(Observable.just("aye", "eee", "beta", "fff", "charlie", "ggg", "delta", "hhh", "echo"));
+        given(dummyService.service2()).willReturn(Observable.just("aye", "eee", "beta", "fff", "charlie", "ggg", "delta", "hhh", "echo"));
 
         Observable<String> dummyService1Observable = subscribeLibraryImplementation.subscribeToService2AndProcess();
 
@@ -48,7 +48,7 @@ public class SubscribeLibrary_should {
     @Test
     public void remove_repeated_letter_strings_and_merge_on_call_subscribe_to_service_2_and_process() {
         given(dummyService.service1()).willReturn(Observable.just("one", "aaa", "two", "bbb", "tri", "ccc", "four", "ddd", "five"));
-        given(dummyService.service1()).willReturn(Observable.just("aye", "eee", "beta", "fff", "charlie", "ggg", "delta", "hhh", "echo"));
+        given(dummyService.service2()).willReturn(Observable.just("aye", "eee", "beta", "fff", "charlie", "ggg", "delta", "hhh", "echo"));
 
         Observable<String> dummyService1Observable = subscribeLibraryImplementation.subscribeToFilterAndMergeServiceOutputs();
 
