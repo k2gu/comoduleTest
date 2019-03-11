@@ -37,7 +37,7 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
         return dataList.size();
     }
 
-    public void updateData(List<String> updatedData) {
+    void updateData(List<String> updatedData) {
         dataList = updatedData;
         notifyDataSetChanged();
     }

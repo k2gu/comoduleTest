@@ -1,7 +1,5 @@
 package p.kirke.testapp.app.viewmodel;
 
-import android.util.Log;
-
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import p.kirke.testapp.app.data.StringCache;

@@ -29,9 +29,13 @@ public class StringListFragment extends Fragment {
     private void initView(FragmentStringsListBinding binding) {
         RecyclerView recyclerView = binding.stringsList;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(getStringListAdapter());
+    }
+
+    private StringListAdapter getStringListAdapter() {
         StringListAdapter adapter = new StringListAdapter();
-        String[] stringArray = new String[]{"String one", "String two", "String three"};
+        String[] stringArray = getResources().getStringArray(R.array.string_list_items);
         adapter.updateData(Arrays.asList(stringArray));
-        recyclerView.setAdapter(adapter);
+        return adapter;
     }
 }
