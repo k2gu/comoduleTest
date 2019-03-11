@@ -9,13 +9,16 @@ public class StringCache {
 
     private MutableLiveData<List<String>> liveDataList = new MutableLiveData<>();
     private List<String> data = new ArrayList<>();
+    private MutableLiveData<State> state = new MutableLiveData<>();
     private static StringCache instance;
-    private static MutableLiveData<State> state = new MutableLiveData<>();
+
+    private StringCache() {
+        this.state.setValue(State.OK);
+    }
 
     public static StringCache getInstance() {
         if (instance == null) {
             instance = new StringCache();
-            state.setValue(State.OK);
         }
         return instance;
     }
